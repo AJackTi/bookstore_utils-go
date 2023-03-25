@@ -16,6 +16,7 @@ const (
 
 type bookstoreLogger interface {
 	Printf(string, ...interface{})
+	Print(...interface{})
 }
 
 var (
@@ -75,6 +76,10 @@ func (l logger) Printf(format string, v ...interface{}) {
 	} else {
 		Info(fmt.Sprintf(format, v...))
 	}
+}
+
+func (l logger) Print(v ...interface{}) {
+	Info(fmt.Sprintf("%v", v))
 }
 
 func GetLogger() bookstoreLogger {
